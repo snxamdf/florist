@@ -1,0 +1,9 @@
+<header>
+	<div id="header" class="cl">
+		<h1><a href="#" th:href="@{${#ctl.path}+'/'}">WEB-MVN-FRAME</a></h1>
+		<span>
+			 <a href="#" th:href="@{${#ctl.path}+'/login'}" th:class="${active == 'login' ? 'select' : ''}">登录</a>
+			 <a href="#" th:href="@{${#ctl.path}+'/register'}" class="select" th:class="${active == 'register' ? 'select' : ''}">注册</a>
+		</span>
+	</div>
+</header>
