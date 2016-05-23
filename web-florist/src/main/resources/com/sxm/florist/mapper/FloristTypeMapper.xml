@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxm.florist.mapper.FloristTypeMapper">
+	<resultMap id="baseResultMap" type="com.sxm.florist.domain.FloristType" extends="com.sxm.core.mapper.BaseMapper.sysResultMap">
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="findById" parameterType="string" resultMap="baseResultMap">
+		select * from t_florist_type where id = #{id}
+	</select>
+</mapper>

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.yhy</groupId>
+	<groupId>com.sxm</groupId>
 	<artifactId>web-florist</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
@@ -16,7 +16,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.yhy</groupId>
+			<groupId>com.sxm</groupId>
 			<artifactId>web-sys</artifactId>
 			<version>1.0.0</version>
 		</dependency>
@@ -29,7 +29,7 @@
 	</dependencies>
 
 	<properties>
-		<start-class>com.yhy.florist.FloristApplication</start-class>
+		<start-class>com.sxm.florist.FloristApplication</start-class>
 		<jdk.version>1.7</jdk.version>
 	</properties>
 

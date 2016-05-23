@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" layout:decorator="core/layout/bms.default" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head layout:fragment="head">
-<title>医药管理：列表</title>
+<title>权限管理：列表</title>
 <meta name="description" content="" />
 <meta name="author" content="" />
 <meta charset="utf-8" th:substituteby="core/layout/include/bms.head" />
@@ -32,9 +32,9 @@
 	
 	<div class="content" layout:fragment="content">
 		<div class="ui tabular menu">
-			<a class="active item">权限列表</a>
+			<a class="active item">权限管理列表</a>
 			
-			<a class="item" sec:authorize="hasAuthority('bms:role:admin')" href="bms.role.form.html" th:href="@{|javascript:action('add')|}">权限创建</a>
+			<a class="item" sec:authorize="hasAuthority('sys:role:add')" href="bms.role.form.html" th:href="@{|javascript:action('add')|}">权限管理创建</a>
 		</div>
 		<form id="searchForm" class="ui form small message" th:action="@{${#ctl.path}+'/sys/role/list'}" action="#" method="post">
 			<div>

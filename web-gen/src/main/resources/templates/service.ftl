@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yhy.core.repository.BaseRepository;
-import com.yhy.core.service.<#if '${tableExtend}' == 'tree'>Tree<#else>Base</#if>Service;
+import com.sxm.core.repository.BaseRepository;
+import com.sxm.core.service.<#if '${tableExtend}' == 'tree'>Tree<#else>Base</#if>Service;
 import ${packageName}.${moduleId}.domain.${className};
 import ${packageName}.${moduleId}.repository.${className}Repository;
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" layout:decorator="core/layout/bms.default" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head layout:fragment="head">
-<title th:text="${state}=='add'?'医药管理：创建':(${state}=='edit'?'医药管理：修改':'医药管理：查看')">医药管理：创建</title>
+<title th:text="${state}=='add'?'权限管理：创建':(${state}=='edit'?'权限管理：修改':'权限管理：查看')">权限管理：创建</title>
 <meta name="description" content="" />
 <meta name="author" content="" />
 <meta charset="utf-8" th:substituteby="core/layout/include/bms.head" />
@@ -15,9 +15,9 @@
 	
 	<div class="content" layout:fragment="content">
 		<div class="ui tabular menu">
-			<a class="item" th:href="@{${#ctl.path}+'/sys/role/list'}" href="bms.role.list.html">权限列表</a>
+			<a class="item" th:href="@{${#ctl.path}+'/sys/role/list'}" href="bms.role.list.html">权限管理列表</a>
 			
-			<a class="active item" th:text="${state}=='add'?'权限创建':(${state}=='edit'?'权限修改':'权限查看')">权限创建</a>
+			<a class="active item" th:text="${state}=='add'?'权限管理创建':(${state}=='edit'?'权限管理修改':'权限管理查看')">权限管理创建</a>
 		</div>
 		<form id="eForm" th:action="@{${#ctl.path}+'/sys/role/save'}" th:object="${domain}" action="#" method="post" class="ui error form segment">
 			<div th:if="${#fields.hasErrors('*')}" class="ui error message">

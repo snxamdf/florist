@@ -5,7 +5,7 @@
  */
 package ${packageName}.${moduleId}.mapper;
 
-import com.yhy.core.mapper.BaseMapper;
+import com.sxm.core.mapper.BaseMapper;
 import ${packageName}.${moduleId}.domain.${className};
 
 /**
