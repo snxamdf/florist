@@ -3,7 +3,7 @@
  *
  * 
  */
-package com.yhy.medicine;
+package com.yhy.florist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -15,15 +15,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = { "com.yhy" })
-public class MedicineApplication extends SpringBootServletInitializer {
+public class FloristApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MedicineApplication.class);
+		return application.sources(FloristApplication.class);
 	}
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(MedicineApplication.class, args);
+		SpringApplication.run(FloristApplication.class, args);
 	}
 
 }

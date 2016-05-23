@@ -31,7 +31,7 @@ public class GenApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		try {
-			initService.initData(Project.medicine);
+			initService.initData(Project.florist);
 			generateService.domain();
 			generateService.metamodel();
 			generateService.mapper();

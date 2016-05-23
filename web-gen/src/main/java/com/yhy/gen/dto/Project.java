@@ -17,7 +17,7 @@ package com.yhy.gen.dto;
  */
 public class Project {
 
-	public static final String medicine = "medicine"; // medicine 子项目
+	public static final String florist = "florist"; // florist 子项目
 	public static final String sys = "sys"; // sys 子项目
 	public static final String bms = "bms"; // 后台子项目
 	public static final String web = "web"; // 前台子项目

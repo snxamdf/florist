@@ -1,4 +1,4 @@
-package com.yhy.medicine.constants;
+package com.yhy.florist.constants;
 
 public class FLORIST {
 

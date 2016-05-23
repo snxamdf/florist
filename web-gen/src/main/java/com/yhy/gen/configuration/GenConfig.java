@@ -27,7 +27,7 @@ class GenConfig {
 	@Value("${spring.datasource.driverClassName:com.mysql.jdbc.Driver}")
 	private String driverClassName;
 
-	@Value("${spring.datasource.url:jdbc:mysql://localhost:3306/medicine?useUnicode=true&characterEncoding=utf-8}")
+	@Value("${spring.datasource.url:jdbc:mysql://localhost:3306/florist?useUnicode=true&characterEncoding=utf-8}")
 	private String url;
 
 	@Value("${spring.datasource.username:root}")
