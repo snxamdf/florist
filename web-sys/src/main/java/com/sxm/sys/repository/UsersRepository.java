@@ -25,7 +25,7 @@ import com.sxm.sys.domain.Users;
  */
 public interface UsersRepository extends BaseRepository<Users, String> {
 
-	@Query("select u from Users u where u.loginname = ?1 and u.deletion = " + Sys.DELETION_NO)
+	@Query("select u from Users u where u.loginName = ?1 and u.deletion = " + Sys.DELETION_NO)
 	Users findByLoginName(String loginName);
 
 	@Query("select distinct r.genre from Users u, UserRoles ur, Role r where u.id=ur.userId and ur.roleId=r.id and u.id = ?1")

@@ -38,7 +38,7 @@ public class LoginController {
 	@RequestMapping(value = { "/login", "/", "index" })
 	public String login() {
 		if (Auths.isLogin()) {
-			return CTL.REDIRECT_PREFIX + "/florist/chain/list";
+			return CTL.REDIRECT_PREFIX + "/florist/flowers/list";
 		}
 		return "sys/login";
 	}
