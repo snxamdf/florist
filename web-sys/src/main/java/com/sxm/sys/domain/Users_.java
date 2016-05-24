@@ -36,6 +36,7 @@ public class Users_ {
 	public static volatile SingularAttribute<Users, Integer> deletion;
 	public static volatile SingularAttribute<Users, Integer> history;
 	public static volatile SingularAttribute<Users, String> memo;
+	public static volatile SingularAttribute<Users, String> roleId;
 	public static volatile SingularAttribute<Users, Date> modified;
 
 }

@@ -5,13 +5,17 @@
  */
 package com.sxm.florist.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import com.sxm.core.domain.Sys;
+import com.sxm.sys.domain.Users;
 
 /**
  * 订单Domain
@@ -38,4 +42,7 @@ public class FloristOrder extends Sys<String> {
 	private String flowersId;
 	private Integer amount;
 
+	@OneToOne(targetEntity = Users.class, cascade = { CascadeType.REFRESH })
+	@JoinColumn(name = "uid", referencedColumnName = "id", insertable = false, updatable = false)
+	private Users user;
 }

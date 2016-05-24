@@ -104,8 +104,8 @@
 								<td th:text="${domain.created==null?'':#dates.format(domain.created,'yyyy-MM-dd HH:mm:ss')}">2014-07-16 17:56:12</td>
 								<td th:text="${domain.modified==null?'':#dates.format(domain.modified,'yyyy-MM-dd HH:mm:ss')}">2014-07-18 17:58:16</td>
 								<td>
-									<a sec:authorize="hasAuthority('bms:role:admin')" href="#" th:href="@{|javascript:action('edit','${domain.id}')|}">修改</a>
-									<a sec:authorize="hasAuthority('bms:role:admin')" href="#" th:href="@{|javascript:disable('${domain.id}')|}">删除</a>
+									<a sec:authorize="hasAuthority('bms:role:comm')" href="#" th:href="@{|javascript:action('edit','${domain.id}')|}">修改</a>
+									<a sec:authorize="hasAuthority('bms:role:comm')" href="#" th:href="@{|javascript:disable('${domain.id}')|}">删除</a>
 								</td>
 							</tr>
 							<tr th:if="${page.content.empty}">
@@ -118,9 +118,7 @@
 				<div class="form-group">
 					<label class="col-sm-1 control-label"></label>
 					<div class="col-sm-11">
-						<ul class="pagination" th:utext="${pagination}">
-
-						</ul>
+						<ul class="pagination" th:utext="${pagination}"></ul>
 					</div>
 				</div>
 			</div>

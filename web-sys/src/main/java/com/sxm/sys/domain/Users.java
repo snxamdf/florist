@@ -7,6 +7,7 @@ package com.sxm.sys.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,5 +36,6 @@ public class Users extends Sys<String> {
 	private String uname;
 	private String addr;
 	private String phone;
-
+	@Transient
+	private String[] roleId;
 }

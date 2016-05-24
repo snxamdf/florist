@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+import com.sxm.sys.domain.Users;
+
 /**
  * 订单元模型类
  * 
@@ -39,5 +41,6 @@ public class FloristOrder_ {
 	public static volatile SingularAttribute<FloristOrder, Integer> deletion;
 	public static volatile SingularAttribute<FloristOrder, Integer> history;
 	public static volatile SingularAttribute<FloristOrder, String> memo;
+	public static volatile SingularAttribute<FloristOrder, Users> user;
 
 }

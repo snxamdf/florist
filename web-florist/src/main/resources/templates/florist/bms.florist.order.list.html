@@ -92,7 +92,7 @@
 						<th>鲜花编号</th>
 						<th>价格</th>
 						<th>地址</th>
-						<th>购买人编号</th>
+						<th>购买人</th>
 						<th>数量</th>
 						<th>创建时间</th>
 						<th>更新时间</th>
@@ -108,13 +108,13 @@
 						<td th:text="${domain.flowersNo}">1</td>
 						<td th:text="${domain.price}">1</td>
 						<td th:text="${domain.addr}">1</td>
-						<td th:text="${domain.uid}">1</td>
+						<td th:text="${domain.user.uname}">1</td>
 						<td th:text="${domain.amount}">1</td>
 						<td th:text="${domain.created==null?'':#dates.format(domain.created,'yyyy-MM-dd HH:mm:ss')}">2014-07-16 17:56:12</td>
 						<td th:text="${domain.modified==null?'':#dates.format(domain.modified,'yyyy-MM-dd HH:mm:ss')}">2014-07-18 17:58:16</td>
 						<td>
-							<a sec:authorize="hasAuthority('bms:role:admin')" href="#" th:href="@{|javascript:action('edit','${domain.id}')|}">修改</a>
-							<a sec:authorize="hasAuthority('bms:role:admin')" href="#" th:href="@{|javascript:disable('${domain.id}')|}">删除</a>
+							<a sec:authorize="hasAuthority('bms:role:comm')" href="#" th:href="@{|javascript:action('edit','${domain.id}')|}">修改</a>
+							<a sec:authorize="hasAuthority('bms:role:comm')" href="#" th:href="@{|javascript:disable('${domain.id}')|}">删除</a>
 						</td>
 					</tr>
 					<tr th:if="${page.content.empty}">

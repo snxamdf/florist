@@ -7,6 +7,7 @@ package com.sxm.sys.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,5 +34,7 @@ public class Role extends Sys<String> {
 	private String name;
 	private String genre;
 	private String code;
+	@Transient
+	private Boolean bool;
 
 }
