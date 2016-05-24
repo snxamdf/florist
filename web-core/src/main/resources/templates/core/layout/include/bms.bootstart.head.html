@@ -29,4 +29,5 @@
 <script type="text/javascript" th:src="@{${#ctl.statics}+'/core/jquery.form.min.js'}"></script>
 <script type="text/javascript" th:src="@{${#ctl.statics}+'/core/jquery.qtip.min.js'}"></script>
 <script type="text/javascript" th:src="@{${#ctl.statics}+'/core/ckeditor.js'}"></script>
+ <script type="text/javascript" th:utext="|var ctl={path:'|+${#ctl.path}+|',env:'|+${#ctl.env}+|',profile:'|+${#ctl.profile}+|',uploads:'|+${#ctl.uploads}+|',statics:'|+${#ctl.statics}+|'};|"></script>
  

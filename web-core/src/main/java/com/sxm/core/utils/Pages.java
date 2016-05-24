@@ -74,9 +74,9 @@ public abstract class Pages {
 
 		// 上一页
 		if (pageNo == first) {// 如果当前页是首页
-			sb.append("<a class='disabled icon item'><i class='left arrow icon'></i></a>\n");
+			sb.append("<li><a>上一页</a></li>\n");
 		} else {
-			sb.append("<a class='icon item' href='javascript:" + funcName + "(" + prev + "," + pageSize + ");'><i class='left arrow icon'></i></a>\n");
+			sb.append("<li><a href='javascript:" + funcName + "(" + prev + "," + pageSize + ");'></a></li>\n");
 		}
 
 		int begin = pageNo - (length / 2);
@@ -99,47 +99,46 @@ public abstract class Pages {
 		if (begin > first) {
 			int i = 0;
 			for (i = first; i < first + slider && i < begin; i++) {
-				sb.append("<a class='item' href='javascript:" + funcName + "(" + i + "," + pageSize + ");'>" + (i + 1 - first) + "</a>\n");
+				sb.append("<li><a href='javascript:" + funcName + "(" + i + "," + pageSize + ");'>" + (i + 1 - first) + "</a></li>\n");
 			}
 			if (i < begin) {
-				sb.append("<div class='disabled item'>...</div>\n");
+				sb.append("<li></li>\n");
 			}
 		}
 
 		for (int i = begin; i <= end; i++) {
 			if (i == pageNo) {
-				sb.append("<a class='active item' href='javascript:'>" + (i + 1 - first) + "</a>\n");
+				sb.append("<li><a href='javascript:'>" + (i + 1 - first) + "</a></li>\n");
 			} else {
-				sb.append("<a class='item' href='javascript:" + funcName + "(" + i + "," + pageSize + ");'>" + (i + 1 - first) + "</a>\n");
+				sb.append("<li><a href='javascript:" + funcName + "(" + i + "," + pageSize + ");'>" + (i + 1 - first) + "</a></li>\n");
 			}
 		}
 
 		if (last - end > slider) {
-			sb.append("<div class='disabled item'>...</div>\n");
+			sb.append("<li></li>\n");
 			end = last - slider;
 		}
 
 		// ...之后的页
 		for (int i = end + 1; i <= last; i++) {
-			sb.append("<a class='item' href='javascript:" + funcName + "(" + i + "," + pageSize + ");'>" + (i + 1 - first) + "</a>\n");
+			sb.append("<li><a href='javascript:" + funcName + "(" + i + "," + pageSize + ");'>" + (i + 1 - first) + "</a></li>\n");
 		}
 
 		// 下一页
 		if (pageNo == last) {
-			sb.append("<a class='disabled icon item'><i class='right arrow icon'></i></a>\n");
+			sb.append("<li><a>下一页</a></li>\n");
 		} else {
-			sb.append("<a class='icon item' href='javascript:" + funcName + "(" + next + "," + pageSize + ");'><i class='right arrow icon'></i></a>\n");
+			sb.append("<li><a href='javascript:" + funcName + "(" + next + "," + pageSize + ");'></a></li>\n");
 		}
 
 		// 手动跳转页
-		sb.append("<div class='disabled item'>");
-		sb.append("<div class='mt-5 mb-5'>当前 ");
-		sb.append("<input class='w40' type='text' value='" + pageNo + "'");
-		sb.append("onkeydown='var e=e||event;var c=e.keyCode||e.which||e.charCode;if(c==13)" + funcName + "(this.value," + pageSize + ");' /> / ");
-		sb.append("<input class='w40' type='text' value='" + pageSize + "'");
-		sb.append("onkeydown='var e=e||event;var c=e.keyCode||e.which||e.charCode;if(c==13)" + funcName + "(" + pageNo + ",this.value);' /> 条");
-		sb.append("，共 " + count + " 条</div></div>");
-
+//		sb.append("<li>当前</li>");
+//		sb.append("<li><input style='width:50px;' type='text' value='" + pageNo + "'");
+//		sb.append("onkeydown='var e=e||event;var c=e.keyCode||e.which||e.charCode;if(c==13)" + funcName + "(this.value," + pageSize + ");' />/</li> ");
+//		sb.append("<li><input style='width:50px;' type='text' value='" + pageSize + "'");
+//		sb.append("onkeydown='var e=e||event;var c=e.keyCode||e.which||e.charCode;if(c==13)" + funcName + "(" + pageNo + ",this.value);' />条");
+//		sb.append("，共 " + count + " 条</li>");
+		sb.append("<li><a>共 " + count + " 条</a></li>");
 		return sb.toString();
 	}
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head layout:fragment="head">
 <title>bootstart布局</title>
 <meta charset="utf-8" />
@@ -17,31 +16,55 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">惠农</a>
+				<a class="navbar-brand" href="/">后台管理</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							首页管理
+							鲜花管理
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="/comm/banner/homepc?sOrdinalOA=10">电脑版焦点图管理</a>
-							</li>
-							<li>
-								<a href="/comm/banner/homewap?sOrdinalOA=10">触屏版焦点图管理</a>
+								<a href="/florist/flowers/list">鲜花列表</a>
 							</li>
 						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							订单管理
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/florist/order/list">订单列表</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							类型管理
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/florist/type/list">类型列表</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/" th:text="${#strings.abbreviate(#authentication.name,10)}"></a>
+					</li>
+					<li>
+						<a href="/logout">退出</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	
-	<div layout:fragment="content" >
-	</div>
+	<div layout:fragment="content"></div>
 </body>
 </html>
