@@ -70,12 +70,13 @@ class SecureSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/**/*.css", "/**/*.js", "/**/*.jpg", "/**/*.png", "/**/*.gif").permitAll();
 		http.authorizeRequests().antMatchers("/**/*.svg", "/**/*.eot", "/**/*.otf", "/**/*.ttf", "/**/*.woff").permitAll();
 		http.authorizeRequests().antMatchers("/", "/login", "/index").permitAll();
+		http.authorizeRequests().antMatchers("/file/**").permitAll();
 		boolean isWebProfile = env.acceptsProfiles(PROFILES.WEB);
 
 		if (isWebProfile) {
-			http.authorizeRequests().antMatchers("/", "/login", "/index").permitAll();
-			// http.authorizeRequests().antMatchers("/*", "/",
-			// "/**").permitAll();
+			// http.authorizeRequests().antMatchers("/", "/login",
+			// "/index").permitAll();
+			http.authorizeRequests().antMatchers("/", "/*", "/", "/**").permitAll();
 		}
 
 		// 单元测试环境：所有url都有权限可以访问

@@ -54,11 +54,16 @@ public class FileUploadController {
 	/**
 	 * ckedit 上传文件方法
 	 * 
-	 * @param ext 文件扩展名 限制
-	 * @param size 文件大小 限制
-	 * @param modePath 上传文件目录(子项目缩写/业务名称) MODULE
-	 * @param upload 上传的文件
-	 * @param CKEditorFuncNum ckedit 默认切换tab
+	 * @param ext
+	 *            文件扩展名 限制
+	 * @param size
+	 *            文件大小 限制
+	 * @param modePath
+	 *            上传文件目录(子项目缩写/业务名称) MODULE
+	 * @param upload
+	 *            上传的文件
+	 * @param CKEditorFuncNum
+	 *            ckedit 默认切换tab
 	 * @param response
 	 * @author yanghongyan
 	 * @version 2015-01-27
@@ -97,10 +102,14 @@ public class FileUploadController {
 	/**
 	 * 上传文件方法
 	 * 
-	 * @param ext 限制的扩展名
-	 * @param size 限制文件大小
-	 * @param modePath 上传文件目录(子项目缩写/业务名称) MODULE
-	 * @param file 上传的文件
+	 * @param ext
+	 *            限制的扩展名
+	 * @param size
+	 *            限制文件大小
+	 * @param modePath
+	 *            上传文件目录(子项目缩写/业务名称) MODULE
+	 * @param file
+	 *            上传的文件
 	 * @return
 	 * @author yanghongyan
 	 * @version 2015-01-26
@@ -111,10 +120,10 @@ public class FileUploadController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public Result<Archive> upload(String ext, String size, @RequestParam("modePath") String modePath, MultipartFile file) {
+	public Result<Archive> upload(String ext, String size, String modePath, MultipartFile file) {
 		Result<Archive> result;
 		try {
-			//掉用上传方法
+			// 掉用上传方法
 			result = this.upload(ext, size, file, modePath);
 			logger.info("ext:" + ext + " size:" + ext + modePath + "文件上传");
 		} catch (Exception e) {
@@ -126,21 +135,21 @@ public class FileUploadController {
 		return result;
 	}
 
-	//上传文件
+	// 上传文件
 	private Result<Archive> upload(String ext, String size, MultipartFile file, String modePath) {
-		//检查文件扩展名限制
+		// 检查文件扩展名限制
 		if (ext == null || "".equals(ext.trim())) {
 			ext = "rar,zip,txt,doc,docx,pdf,ppt,xls,xlsx,jpg,png,gif,jpeg,bmp";
 		}
-		//检查上传大小限制
+		// 检查上传大小限制
 		if (size == null || "".equals(size)) {
 			size = maxSize.toString();
 		}
 		Result<Archive> resultArchive = null;
-		long lsize = file.getSize();//获取大小
+		long lsize = file.getSize();// 获取大小
 		if (lsize > Integer.parseInt(size)) {
 			resultArchive = new Result<Archive>();
-			resultArchive.setStatus(2);//大小不合法
+			resultArchive.setStatus(2);// 大小不合法
 			lsize = Long.parseLong(size) / 1024l / 1024l;
 			resultArchive.setMessage("文件大小超过" + lsize + "M 无法上传");
 			resultArchive.setSuccess(false);
@@ -156,9 +165,9 @@ public class FileUploadController {
 				break;
 			}
 		}
-		//符合上传文件扩展名规则
+		// 符合上传文件扩展名规则
 		if (bool) {
-			//上传文件
+			// 上传文件
 			resultArchive = archiveService.upload(file, modePath);
 			resultArchive.setSuccess(true);
 		} else {
@@ -173,7 +182,8 @@ public class FileUploadController {
 	 * 删除文件方法
 	 * 
 	 * @param request
-	 * @param path 上传文件目录(子项目缩写/业务名称) MODULE
+	 * @param path
+	 *            上传文件目录(子项目缩写/业务名称) MODULE
 	 * @author yanghongyan
 	 * @version 2015-01-19
 	 * @----------------------------------------------------------------------------------------

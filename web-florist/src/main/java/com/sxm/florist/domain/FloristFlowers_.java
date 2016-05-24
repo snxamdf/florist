@@ -37,5 +37,6 @@ public class FloristFlowers_ {
 	public static volatile SingularAttribute<FloristFlowers, Integer> deletion;
 	public static volatile SingularAttribute<FloristFlowers, Integer> history;
 	public static volatile SingularAttribute<FloristFlowers, String> memo;
+	public static volatile SingularAttribute<FloristFlowers, String> image;
 
 }

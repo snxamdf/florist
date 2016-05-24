@@ -7,9 +7,37 @@
 <meta name="author" content="" />
 <meta charset="utf-8" th:substituteby="core/layout/include/bms.bootstart.head" />
 <script type="text/javascript">
+	/*<![CDATA[*/
 	$(document).ready(function() {
 		$("#eForm").validate();
+		var _csrf = $("input[name='_csrf']").val();
+		var url = "/file/upload?_csrf=" + _csrf + "&modePath=web/florist";
+		console.log(url);
+		$("#imageFile").fileinput({
+			uploadUrl : url,//上传地址
+			enctype : 'multipart/form-data',
+			overwriteInitial : true,//重新选择文件后是否覆盖 initialPreview
+			language : "zh",//设置语言
+			previewFileType : [ "image" ],//只选择image类型文件
+			allowedFileExtensions : [ "jpg", "jpeg", "png", "gif" ],
+			initialCaption : "本地上传封面",
+			dropZoneTitle : "封面拖拽到这里...",
+			browseLabel : "本地上传封面",//选择按钮文字 
+			showPreview : false,//关闭预览
+			//removeLabel : "删除",//移除按钮文字
+			showRemove : true
+		}).on("fileuploaded", function(event, data, prvid, index) {
+			var result = data.response;
+			console.log(result);
+		}).on("fileremoved", function(event, prvid, index) {//未上传时点击删除
+			console.log("fileremoved", prvid);
+			$("#imageFilePath").val("");
+		}).on("filesuccessremove", function(event, prvid, index) {//上传成功后点击删除
+			console.log("filesuccessremove", prvid);
+			$("#imageFilePath").val("");
+		});
 	});
+	/*]]>*/
 </script>
 </head>
 <body id="main">
@@ -50,9 +78,15 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 control-label">图片</label>
+							<div class="col-sm-5">
+								<input type="file" id="imageFile" name="file" value="" accept="image/*" multiple="multiple" class="file-loading" />
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-sm-2 control-label">类型</label>
 							<div class="col-sm-5">
-								<select id="typeId" th:field="*{typeId}" class="form-control" >
+								<select id="typeId" th:field="*{typeId}" class="form-control">
 									<option th:each="ts : ${types}" th:value="${ts.id}" th:text="${ts.name}"></option>
 								</select>
 							</div>

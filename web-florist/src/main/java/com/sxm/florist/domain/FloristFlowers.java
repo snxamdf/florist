@@ -35,5 +35,5 @@ public class FloristFlowers extends Sys<String> {
 	private String no;
 	private Integer price;
 	private String material;
-
+	private String image;
 }
