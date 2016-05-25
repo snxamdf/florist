@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head layout:fragment="head">
+<title>在线鲜花预订用户注册</title>
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta charset="utf-8" th:substituteby="core/layout/include/bms.bootstart.head" />
+<script type="text/javascript">
+	$(function() {
+		$("#regForm").validate({
+			rules : {
+				loginName : "required",
+				uname : "required",
+				addr : "required",
+				phone : "required",
+				passwd : "required",
+				okpasswd : {
+					equalTo : "#passwd"
+				}
+			},
+			submitHandler : function(form) {
+				$("#regForm").ajaxSubmit({
+					dataType : "json",
+					success : function(result) {
+						if (result.success) {
+							$("#regForm")[0].reset();
+						}
+						alert(result.data);
+					}
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body id="main">
+
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">首页</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li th:each="ts : ${types}">
+								<a href="" th:id="${ts.id}" th:text="${ts.name}">类型一</a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#">欢迎游客</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<div class="col-md-2 column">
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<h3 class="text-warning">会员注册</h3>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<h3 class="text-warning">推荐</h3>
+						<div th:each="domain,userStat : ${page.content}" class="file-preview-frame" style="width: 140px; height: 140px;" th:if="${userStat.index lt 2}">
+							<img th:src="${#ctl.uploads+domain.image}" class="file-preview-image" style="width: 140px; height: 140px;" />
+							<div class="file-thumbnail-footer">
+								<div th:text="${domain.name}"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 column">
+
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<form id="regForm" th:action="@{${#ctl.path}+'/do/register'}" method="post" role="form">
+							<div class="form-group">
+								<label>登录名</label>
+								<input type="text" class="form-control" id="loginName" name="loginName" />
+							</div>
+							<div class="form-group">
+								<label>密码</label>
+								<input type="password" class="form-control" id="passwd" name="passwd" />
+							</div>
+							<div class="form-group">
+								<label>确认密码</label>
+								<input type="password" class="form-control" id="okpasswd" name="okpasswd" />
+							</div>
+							<div class="form-group">
+								<label>姓名</label>
+								<input type="text" class="form-control" id="uname" name="uname" />
+							</div>
+							<div class="form-group">
+								<label>收货地址</label>
+								<input type="text" class="form-control" id="addr" name="addr" />
+							</div>
+							<div class="form-group">
+								<label>手机号</label>
+								<input type="text" class="form-control" id="phone" name="phone" />
+							</div>
+							<button type="submit" class="btn btn-default">提交</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

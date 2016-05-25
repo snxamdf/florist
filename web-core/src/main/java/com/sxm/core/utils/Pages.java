@@ -76,7 +76,7 @@ public abstract class Pages {
 		if (pageNo == first) {// 如果当前页是首页
 			sb.append("<li><a>上一页</a></li>\n");
 		} else {
-			sb.append("<li><a href='javascript:" + funcName + "(" + prev + "," + pageSize + ");'></a></li>\n");
+			sb.append("<li><a href='javascript:" + funcName + "(" + prev + "," + pageSize + ");'>上一页</a></li>\n");
 		}
 
 		int begin = pageNo - (length / 2);
@@ -128,7 +128,7 @@ public abstract class Pages {
 		if (pageNo == last) {
 			sb.append("<li><a>下一页</a></li>\n");
 		} else {
-			sb.append("<li><a href='javascript:" + funcName + "(" + next + "," + pageSize + ");'></a></li>\n");
+			sb.append("<li><a href='javascript:" + funcName + "(" + next + "," + pageSize + ");'>下一页</a></li>\n");
 		}
 
 		// 手动跳转页

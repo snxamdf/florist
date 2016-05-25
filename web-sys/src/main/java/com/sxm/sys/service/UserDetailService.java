@@ -47,8 +47,7 @@ public class UserDetailService implements UserDetailsService {
 			throw new UsernameNotFoundException(String.format("User %s does not exist!", username));
 		}
 		List<String> userRoles = usersRepository.findPermissionsById(user.getId());
-		System.out.println(userRoles);
-		SecureUserDetail userDetail = new SecureUserDetail(user.getId(), user.getLoginName(), user.getPasswd());
+		SecureUserDetail userDetail = new SecureUserDetail(user.getId(), user.getUname(), user.getPasswd());
 
 		List<GrantedAuthority> authorities = Lists.newArrayList();
 		for (String value : userRoles) {

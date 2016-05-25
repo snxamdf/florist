@@ -41,6 +41,8 @@ public class FloristOrder_ {
 	public static volatile SingularAttribute<FloristOrder, Integer> deletion;
 	public static volatile SingularAttribute<FloristOrder, Integer> history;
 	public static volatile SingularAttribute<FloristOrder, String> memo;
+	public static volatile SingularAttribute<FloristOrder, String> name;
+	public static volatile SingularAttribute<FloristOrder, String> phone;
 	public static volatile SingularAttribute<FloristOrder, Users> user;
 
 }

@@ -41,4 +41,7 @@ public class UsersService extends BaseService<Users, String> {
 		return usersRepository;
 	}
 
+	public Users findByLoginName(String loginName) {
+		return usersRepository.findByLoginName(loginName);
+	}
 }

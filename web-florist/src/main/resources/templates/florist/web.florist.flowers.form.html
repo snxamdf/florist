@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head layout:fragment="head">
+<title>购买</title>
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta charset="utf-8" th:substituteby="core/layout/include/bms.bootstart.head" />
+<script type="text/javascript">
+	$(function() {
+		$("#eForm").validate();
+	});
+</script>
+</head>
+<body id="main">
+
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">首页</a>
+						</div>
+
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right" th:if="${#authentication.name!='anonymousUser'}">
+								<li>
+									<a href="/" th:text="${'欢迎，'+#authentication.name}">游客</a>
+								</li>
+								<li>
+									<a href="/logout">退出</a>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right" th:if="${#authentication.name=='anonymousUser'}">
+								<li>
+									<a href="/" th:text="${'欢迎，游客'}">游客</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+
+				<div class="col-md-3 column"></div>
+				<div class="col-md-9 column">
+					<h3>鲜花购买下单页面</h3>
+				</div>
+				<div class="col-md-12 column" th:if="${orderstates=='0'}">
+					<form id="eForm" th:action="@{${#ctl.path}+'/florist/order/save'}" method="post" class="form-horizontal">
+						<div class="form-group">
+							<input type="hidden" id="state" name="state" th:value="${state}" />
+							<div></div>
+							<input type="hidden" name="flowersId" th:value="${domain.id}" />
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">鲜花名称</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" th:value="${domain.name}" readonly="readonly" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">订单编号</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" th:value="${domain.no}" readonly="readonly" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">鲜花编号</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="flowersNo" th:value="${domain.no}" readonly="readonly" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">鲜花图片</label>
+							<div class="col-sm-5">
+								<img alt="" th:src="${#ctl.uploads+domain.image}" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">鲜花类型</label>
+							<div class="col-sm-5">
+								<input type="hidden" class="form-control" th:value="${domain.typeId}" readonly="readonly" />
+								<input type="text" class="form-control" th:value="${domain.type.name}" readonly="readonly" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">鲜花价格</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="price" th:value="${domain.price}" readonly="readonly" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">鲜花材料</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" th:value="${domain.material}" readonly="readonly" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">姓名</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="name" required="required"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">联系电话</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="phone" required="required"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">购买数量</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="amount" required="required"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">收货地址</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="addr" required="required"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input class="btn btn-default" type="submit" value="购买" />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-3 column"></div>
+				<div class="col-md-9 column" th:if="${orderstates=='1'}">
+					<h5>您还款登录</h5>
+					<a href="/">点击跳转首页登录</a>
+				</div>
+				<div class="col-md-3 column"></div>
+				<div class="col-md-9 column" th:if="${orderstates=='3'}">
+					<h5>购买成功</h5>
+					<span th:text="'订单号：'+${domain.orderNo}"></span>
+					<a href="/">点击跳转首页</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

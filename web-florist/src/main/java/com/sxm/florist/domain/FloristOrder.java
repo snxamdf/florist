@@ -41,6 +41,8 @@ public class FloristOrder extends Sys<String> {
 	private String uid;
 	private String flowersId;
 	private Integer amount;
+	private String name;
+	private String phone;
 
 	@OneToOne(targetEntity = Users.class, cascade = { CascadeType.REFRESH })
 	@JoinColumn(name = "uid", referencedColumnName = "id", insertable = false, updatable = false)
