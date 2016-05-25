@@ -28,13 +28,13 @@
 			showRemove : true
 		}).on("fileuploaded", function(event, data, prvid, index) {
 			var result = data.response;
-			console.log(result);
+			console.log(result.data.path);
 		}).on("fileremoved", function(event, prvid, index) {//未上传时点击删除
 			console.log("fileremoved", prvid);
-			$("#imageFilePath").val("");
+			$("#image").val("");
 		}).on("filesuccessremove", function(event, prvid, index) {//上传成功后点击删除
 			console.log("filesuccessremove", prvid);
-			$("#imageFilePath").val("");
+			$("#image").val("");
 		});
 	});
 	/*]]>*/
@@ -81,6 +81,7 @@
 							<label class="col-sm-2 control-label">图片</label>
 							<div class="col-sm-5">
 								<input type="file" id="imageFile" name="file" value="" accept="image/*" multiple="multiple" class="file-loading" />
+								<input type="hidden" th:field="*{image}" />
 							</div>
 						</div>
 						<div class="form-group">

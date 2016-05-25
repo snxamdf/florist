@@ -44,15 +44,13 @@ public class ArchiveServiceImpl implements ArchiveService {
 	private final String pathPrefix = "/archive";
 
 	/**
-	 * 文件上传.
-	 * .
-	 * 上传文件目录命名规则：
-	 * 子项目缩写/业务名称
-	 * 示例：sys/help 、 cms/news 、 vchr/templet 、 mbr/apply
-	 * 不要包含“大写字母”、“-”、“_”等字符
+	 * 文件上传. . 上传文件目录命名规则： 子项目缩写/业务名称 示例：sys/help 、 cms/news 、 vchr/templet 、
+	 * mbr/apply 不要包含“大写字母”、“-”、“_”等字符
 	 * 
-	 * @param file 上传的文件
-	 * @param path 上传文件目录(子项目缩写/业务名称)：sys/templet
+	 * @param file
+	 *            上传的文件
+	 * @param path
+	 *            上传文件目录(子项目缩写/业务名称)：sys/templet
 	 * @return
 	 * @author sxm
 	 * @version 2015-01-16
@@ -75,6 +73,9 @@ public class ArchiveServiceImpl implements ArchiveService {
 		if (file.getSize() > uploadMaxSize) {
 			return Results.fault(-4, "上传文件大小超过最大值限制!", null);
 		}
+		String dir = this.getClass().getResource("/").getPath();
+		dir = dir.substring(0, dir.indexOf("web-bms")) + "/web-core";
+
 		// 上传文件
 		String formatPath = com.sxm.core.utils.Files.formatPath(path);
 		String fileId = Identities.uuid2();
