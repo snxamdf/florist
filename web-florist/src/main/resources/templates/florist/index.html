@@ -149,6 +149,7 @@
 						</div>
 					</div>
 				</div>
+				<div th:if="${page.content.empty}" >没有数据！</div>
 			</div>
 			<div class="col-md-10 column" id="list">
 				<ul class="pagination" th:utext="${pagination}">
