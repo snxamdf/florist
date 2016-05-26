@@ -78,7 +78,7 @@ public class WebIndexController extends BaseController<FloristFlowers, String> {
 		return new Module<FloristFlowers>(FLORIST.PROJECT, "florist.flowers", CTL.WEB, FloristFlowers.class);
 	}
 
-	@RequestMapping(value = { "/", "index", "mlist" })
+	@RequestMapping(value = { "/", "/index", "/mlist","/login" })
 	public String index(Model model, HttpServletRequest request, HttpServletResponse response) {
 		Iterable<FloristType> iterableTypes = floristTypeService.findAll();
 		model.addAttribute("types", iterableTypes);

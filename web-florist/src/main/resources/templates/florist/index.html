@@ -20,10 +20,10 @@
 						if (result.success) {
 							//$("#logindForm")[0].reset();
 							window.location.reload();
-						}else{
+						} else {
 							alert("用户名或密码不正确！");
 						}
-						
+
 					}
 				});
 			}
@@ -93,7 +93,7 @@
 								<a href="/logout">退出</a>
 							</li>
 						</ul>
-						<ul class="nav navbar-nav navbar-right"  th:if="${#authentication.name=='anonymousUser'}">
+						<ul class="nav navbar-nav navbar-right" th:if="${#authentication.name=='anonymousUser'}">
 							<li>
 								<a href="/" th:text="${'欢迎，游客'}">游客</a>
 							</li>
@@ -139,6 +139,9 @@
 				</div>
 			</div>
 			<div class="col-md-10 column" id="list">
+				<div class="alert alert-success alert-dismissable">
+					<h4>鲜花展示</h4>
+				</div>
 				<div th:each="domain,userStat : ${page.content}" class="file-preview-frame" style="width: 140px; height: 140px;">
 					<img th:src="${#ctl.uploads+domain.image}" class="file-preview-image" style="width: 140px; height: 140px;" />
 					<div class="file-thumbnail-footer">
@@ -152,7 +155,7 @@
 						</div>
 					</div>
 				</div>
-				<div th:if="${page.content.empty}" >没有数据！</div>
+				<div th:if="${page.content.empty}">没有数据！</div>
 			</div>
 			<div class="col-md-10 column" id="list">
 				<ul class="pagination" th:utext="${pagination}">
