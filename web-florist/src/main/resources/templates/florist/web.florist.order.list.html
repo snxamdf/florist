@@ -125,7 +125,6 @@
 					<table class="table table-condensed">
 						<thead>
 							<tr>
-								<th class="w300">标识</th>
 								<th>订单编号</th>
 								<th>鲜花编号</th>
 								<th>价格</th>
@@ -137,9 +136,6 @@
 						</thead>
 						<tbody>
 							<tr th:each="domain : ${page.content}">
-								<td>
-									<a href="bms.florist.order.form.html" th:text="${domain.id}" th:href="@{|javascript:action('view','${domain.id}')|}">1</a>
-								</td>
 								<td th:text="${domain.orderNo}">1</td>
 								<td th:text="${domain.flowersNo}">1</td>
 								<td th:text="${domain.price}">1</td>
