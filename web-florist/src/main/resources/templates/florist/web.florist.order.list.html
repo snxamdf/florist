@@ -94,10 +94,16 @@
 							<div class="list-group-item">
 								<a href="/florist/order/list">订单信息</a>
 							</div>
+							<div class="list-group-item">
+								<a href="/florist/leave/msg/add">留言版</a>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-9 column">
+					<div class="alert alert-success alert-dismissable">
+						<h4>订单列表</h4>
+					</div>
 					<form id="searchForm" class="form-horizontal" th:action="@{${#ctl.path}+'/florist/order/list'}" role="form" method="post">
 						<div>
 							<input id="id" name="id" type="hidden" />
