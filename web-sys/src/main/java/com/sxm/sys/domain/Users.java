@@ -36,6 +36,7 @@ public class Users extends Sys<String> {
 	private String uname;
 	private String addr;
 	private String phone;
+	private String perm;
 	@Transient
 	private String[] roleId;
 }

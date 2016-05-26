@@ -8,6 +8,8 @@ package com.sxm.florist.domain;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+import com.sxm.sys.domain.Users;
+
 /**
  * 留言版元模型类
  * 
@@ -26,4 +28,5 @@ public class FloristLeaveMsg_ {
 	public static volatile SingularAttribute<FloristLeaveMsg, String> msg;
 	public static volatile SingularAttribute<FloristLeaveMsg, String> title;
 
+	public static volatile SingularAttribute<FloristLeaveMsg, Users> user;
 }

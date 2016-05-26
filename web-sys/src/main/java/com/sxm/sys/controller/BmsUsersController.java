@@ -181,6 +181,7 @@ public class BmsUsersController extends BaseController<Users, String> {
 			}
 		}
 		domain.setPasswd(Passwords.encrypt(domain.getPasswd()));
+		domain.setPerm("bms");
 		this.getService().save(domain);
 		Map<String, Object> params = Servlets.getParametersStartsWith(request, CTL.SEARCH_PREFIX);
 		redirect.addAllAttributes(params);

@@ -98,7 +98,7 @@ public abstract class Auths {
 			Authentication authentication = authenticationManager.authenticate(authRequest);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 			HttpSession session = request.getSession();
-			session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // 这个非常重要，否则验证后将无法登陆
+			session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 			return Results.success("登录成功");
 		} catch (AuthenticationException ex) {
 			return Results.fault(ex.getMessage());

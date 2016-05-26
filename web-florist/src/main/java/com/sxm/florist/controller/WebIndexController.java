@@ -112,6 +112,7 @@ public class WebIndexController extends BaseController<FloristFlowers, String> {
 		}
 		user.setRoleId(new String[] { "3" });
 		user.setPasswd(Passwords.encrypt(user.getPasswd()));
+		user.setPerm("web");
 		usersService.save(user);
 		UserRoles rs = new UserRoles();
 		rs.setRoleId("3");// 普通用户

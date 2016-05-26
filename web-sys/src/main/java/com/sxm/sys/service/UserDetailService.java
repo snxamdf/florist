@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
+import com.sxm.core.constants.PROFILES;
 import com.sxm.sys.domain.Users;
 import com.sxm.sys.repository.UsersRepository;
 
@@ -41,18 +42,38 @@ public class UserDetailService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// boolean isBmsProfile = env.acceptsProfiles(PROFILES.BMS);
+		boolean isBmsProfile = env.acceptsProfiles(PROFILES.BMS);
 		Users user = usersRepository.findByLoginName(username);
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("User %s does not exist!", username));
+		} else {
+			if ("bms".equals(user.getPerm())) {
+				if (!isBmsProfile) {
+					throw new UsernameNotFoundException(String.format("User %s does not exist!", username));
+				}
+			}
+			if ("web".equals(user.getPerm())) {
+				if (isBmsProfile) {
+					throw new UsernameNotFoundException(String.format("User %s does not exist!", username));
+				}
+			}
 		}
 		List<String> userRoles = usersRepository.findPermissionsById(user.getId());
-		SecureUserDetail userDetail = new SecureUserDetail(user.getId(), user.getUname(), user.getPasswd());
 
 		List<GrantedAuthority> authorities = Lists.newArrayList();
+		boolean bool = false;
 		for (String value : userRoles) {
+			if (value.indexOf("bms") != -1 && bool == false) {
+				bool = true;
+			}
 			authorities.add(new SimpleGrantedAuthority(value));
 		}
+		if (isBmsProfile && bool) {
+
+		} else {
+
+		}
+		SecureUserDetail userDetail = new SecureUserDetail(user.getId(), user.getUname(), user.getPasswd());
 		userDetail.setAuthorities(authorities);
 		return userDetail;
 	}

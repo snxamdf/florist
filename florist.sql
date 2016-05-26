@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2016-05-25 17:38:23
+Date: 2016-05-26 11:32:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,6 +44,32 @@ CREATE TABLE `t_florist_flowers` (
 INSERT INTO `t_florist_flowers` VALUES ('1', '1', '1', '1', '1', '1', '1', '2016-05-24 09:50:24', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 10:04:27', '0', '0', '0', '0', '/web/florist/69d5f79682c4474a87a35786311d9e1c.png');
 INSERT INTO `t_florist_flowers` VALUES ('2', '2', '2', '2', '2', '2', '2', '2016-05-24 10:17:50', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 10:14:10', '0', '0', '0', '0', '/web/florist/c44f1a00320c49f9996ebc96b6f3689f.png');
 INSERT INTO `t_florist_flowers` VALUES ('50ddff52-0bf8-465a-84ed-031ecc7371bc', '21', '2', '12', '1', '2', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 10:49:19', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 09:57:58', '0', '0', '0', null, '/web/florist/57d889b8ca1e4347aa281b1114b129ed.png');
+INSERT INTO `t_florist_flowers` VALUES ('c97e47af-2f64-4afe-ba3a-18a0f97f321c', '这是小', '1', '0056', '25', '123123', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:32:07', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:32:07', '0', '0', '0', null, '/web/florist/8172bbb43b0f435e823481465cf529c8.png');
+
+-- ----------------------------
+-- Table structure for t_florist_leave_msg
+-- ----------------------------
+DROP TABLE IF EXISTS `t_florist_leave_msg`;
+CREATE TABLE `t_florist_leave_msg` (
+  `id` varchar(50) NOT NULL,
+  `uid` varchar(50) DEFAULT NULL COMMENT '留言人',
+  `msg` varchar(2000) DEFAULT NULL COMMENT '内容',
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `creater` varchar(50) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modifier` varchar(50) DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `version` int(11) DEFAULT NULL,
+  `deletion` int(11) DEFAULT NULL,
+  `history` int(11) DEFAULT NULL,
+  `memo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_florist_leave_msg
+-- ----------------------------
+INSERT INTO `t_florist_leave_msg` VALUES ('01927b90-290e-4db9-8d5c-d80679f456dc', 'cbe2a006-48f3-43cb-aa3f-183058909e3a', 'adfd', ' 标题', 'cbe2a006-48f3-43cb-aa3f-183058909e3a', '2016-05-26 10:42:48', 'cbe2a006-48f3-43cb-aa3f-183058909e3a', '2016-05-26 10:42:48', '0', '0', '0', null);
 
 -- ----------------------------
 -- Table structure for t_florist_order
@@ -115,6 +141,7 @@ INSERT INTO `t_florist_type` VALUES ('1', '类型m', null, '2016-05-24 11:01:04'
 INSERT INTO `t_florist_type` VALUES ('1caaf2bb-a54a-46f8-b419-c9dc06cd699a', '123', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 11:06:18', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 11:06:18', '0', '0', '0', null);
 INSERT INTO `t_florist_type` VALUES ('2', '类型2', null, '2016-05-24 11:01:07', null, '2016-05-24 11:01:11', '0', '0', '0', '0');
 INSERT INTO `t_florist_type` VALUES ('8d0af055-81c6-459e-bf1c-fcac2a18781b', '添加类型', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 11:05:37', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 11:05:37', '0', '0', '0', null);
+INSERT INTO `t_florist_type` VALUES ('f7cb408f-4448-4718-9453-1100ed841f02', '小花', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:31:43', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:31:43', '0', '0', '0', null);
 
 -- ----------------------------
 -- Table structure for t_gen_modules
@@ -133,7 +160,7 @@ CREATE TABLE `t_gen_modules` (
 -- ----------------------------
 -- Records of t_gen_modules
 -- ----------------------------
-INSERT INTO `t_gen_modules` VALUES ('sys01', 'true', 'sys', '系统模块', 'sxm', 'web-sys,');
+INSERT INTO `t_gen_modules` VALUES ('florist01', 'true', 'florist', '系统模块', 'sxm', 'web-florist,');
 
 -- ----------------------------
 -- Table structure for t_gen_projects
@@ -181,9 +208,7 @@ CREATE TABLE `t_gen_tables` (
 -- ----------------------------
 -- Records of t_gen_tables
 -- ----------------------------
-INSERT INTO `t_gen_tables` VALUES ('sys01001', 'true', 'false', 't_sys_role', '权限管理', '权限管理表', 'sys', null, 'sys01,');
-INSERT INTO `t_gen_tables` VALUES ('sys01002', 'true', 'false', 't_sys_user_roles', '用户角色关系表', '用户角色关系表', 'sys', null, 'sys01,');
-INSERT INTO `t_gen_tables` VALUES ('sys01003', 'true', 'false', 't_sys_users', '用户表', '用户表', 'sys', null, 'sys01,');
+INSERT INTO `t_gen_tables` VALUES ('florist01004', 'true', 'false', 't_florist_leave_msg', '留言版', '留言版表', 'sys', null, 'florist01,');
 
 -- ----------------------------
 -- Table structure for t_sys_role
@@ -232,14 +257,16 @@ CREATE TABLE `t_sys_users` (
   `history` int(11) DEFAULT NULL,
   `memo` varchar(255) DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
+  `perm` varchar(50) DEFAULT NULL COMMENT '前台用户web 后台用户bms',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_sys_users
 -- ----------------------------
-INSERT INTO `t_sys_users` VALUES ('72c29994-a075-11e4-a96d-005056a8', 'admin', 'bddc3baefabe4037262a2700648ea6663504e374656c8d208258a2ba1937d0a9943d9b423dddc9b6', '管理员', 'asdf', '15164383713', null, '2016-05-25 17:33:06', '72c29994-a075-11e4-a96d-005056a8', '0', '0', '0', null, '2016-05-25 17:33:06');
-INSERT INTO `t_sys_users` VALUES ('cbe2a006-48f3-43cb-aa3f-183058909e3a', 'weba', 'ae8603575d73ab66c327bb72666ce5f46833be5bbceb959ddeb133f1be00e979389a75d4102e95d3', '浣熊用', 'ddd', '123123', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 14:17:31', '72c29994-a075-11e4-a96d-005056a8', '0', '0', '0', null, '2016-05-25 14:17:31');
+INSERT INTO `t_sys_users` VALUES ('72273fb9-a780-423a-9a67-7ac715e81f68', 'comm', '7b8156d4b2764c10415b753f582742361d5ef97d88cfe09043ca39606564543bfe818a8afc556cff', '普通用户', '联系地址联系地址', '15555555555', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:12:05', '72c29994-a075-11e4-a96d-005056a8', '0', '0', '0', null, '2016-05-26 11:12:05', 'bms');
+INSERT INTO `t_sys_users` VALUES ('72c29994-a075-11e4-a96d-005056a8', 'admin', 'bddc3baefabe4037262a2700648ea6663504e374656c8d208258a2ba1937d0a9943d9b423dddc9b6', '管理员', 'asdf', '15164383713', null, '2016-05-25 17:33:06', '72c29994-a075-11e4-a96d-005056a8', '0', '0', '0', null, '2016-05-25 17:33:06', 'bms');
+INSERT INTO `t_sys_users` VALUES ('cbe2a006-48f3-43cb-aa3f-183058909e3a', 'weba', 'ae8603575d73ab66c327bb72666ce5f46833be5bbceb959ddeb133f1be00e979389a75d4102e95d3', '浣熊用', 'ddd', '123123', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 14:17:31', '72c29994-a075-11e4-a96d-005056a8', '0', '0', '0', null, '2016-05-25 14:17:31', 'web');
 
 -- ----------------------------
 -- Table structure for t_sys_user_roles
@@ -270,13 +297,13 @@ INSERT INTO `t_sys_user_roles` VALUES ('0950d3ae-e39c-4d09-a721-a2d0cdb7c2f3', '
 INSERT INTO `t_sys_user_roles` VALUES ('121f8ae4-d60d-4c87-9489-ac2162fe7dfe', '72c29994-a075-11e4-a96d-005056a8', '1', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:31:40', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:31:40', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('124d9fed-763b-42fd-af86-2760ff6bade5', 'cbe2a006-48f3-43cb-aa3f-183058909e3a', '3', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 14:17:31', '72c29994-a075-11e4-a96d-005056a8', '2016-05-25 14:17:31', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('1523d2c7-ce26-4986-9e50-9d9867085d8f', '482726ab-7a5a-43d9-8047-b47a602c1ee2', '3', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 15:13:05', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 15:13:05', '0', '0', '0', null);
+INSERT INTO `t_sys_user_roles` VALUES ('1ba99c54-d8d5-439d-b420-80fa6d17da3f', '', '4', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:12:05', '72c29994-a075-11e4-a96d-005056a8', '2016-05-26 11:12:05', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('266c923b-a4a7-450f-9c7f-84e7315d20ae', '6484e02d-8138-4057-a160-d6a0527fc2aa', '3', 'anonymousUser', '2016-05-25 13:58:45', 'anonymousUser', '2016-05-25 13:58:45', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('47377ffe-82a9-4108-ae1c-8596e6416443', '72c29994-a075-11e4-a96d-005056a8', '4', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:31:40', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:31:40', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('47e276a0-3b8e-479c-8206-d049ebcfe5db', 'cfca4cc9-0ab1-42d5-bea4-944cbfaee646', '4', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:18:00', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:18:00', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('4af2ffe5-388c-4574-b8d7-f226cc64ee77', '72c29994-a075-11e4-a96d-005056a8', '3', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:31:40', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 16:31:40', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('4df8cd5d-fc76-4b88-8920-d10261ca0f39', 'faf7898f-3d19-4fe8-b87b-3481c0058025', '3', 'anonymousUser', '2016-05-25 14:03:42', 'anonymousUser', '2016-05-25 14:03:42', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('b878e34c-137e-437b-aae9-4224b57f363c', 'c2304c7e-0132-42ba-8ebc-9f69614233a7', '3', 'anonymousUser', '2016-05-25 13:59:22', 'anonymousUser', '2016-05-25 13:59:22', '0', '0', '0', null);
-INSERT INTO `t_sys_user_roles` VALUES ('b9d65f90-0f30-4333-8bce-e7aa46bc145e', '', '2', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 15:17:28', '72c29994-a075-11e4-a96d-005056a8', '2016-05-24 15:17:28', '0', '0', '0', null);
 INSERT INTO `t_sys_user_roles` VALUES ('cad81aa6-7f05-4d55-92d5-221ae346e304', 'da0ef717-a908-4c8d-ab8b-b5ba6150457d', '3', 'anonymousUser', '2016-05-25 13:55:26', 'anonymousUser', '2016-05-25 13:55:26', '0', '0', '0', null);
 
 -- ----------------------------
